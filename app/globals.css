@@ -1,0 +1,445 @@
+@import "tailwindcss";
+
+/*
+  AURA TRAVEL design tokens. Documented in DESIGN.md.
+  Primitives name a value; semantic tokens name a job. Components use semantic tokens.
+
+  Palette rebrand: keeps the restrained travel base (paper, sand, stone, charcoal, forest)
+  and borrows Awwwards' signature moves: a hot signal orange for action and a pale butter
+  highlight for emphasis, set against near black.
+*/
+:root {
+  /* Primitives */
+  --paper: #efece6;
+  --sand: #e4dfd3;
+  --stone: #cdc7b9;
+  --ink: #171614;
+  --charcoal: #111110;
+  --umber: #57534b;
+  --forest: #21392c;
+  --signal: #fa5d29;
+  --signal-deep: #a8340a;
+  --butter: #fff083;
+  --brick: #8a2b20;
+
+  /* Semantic */
+  --c-bg: var(--paper);
+  --c-raised: var(--sand);
+  --c-inverse: var(--charcoal);
+  --c-fg: var(--ink);
+  --c-muted: var(--umber);
+  --c-on-inverse: var(--paper);
+  --c-line: var(--stone);
+  --c-accent: var(--signal-deep); /* text, numerals and lines on light surfaces */
+  --c-signal: var(--signal); /* fills, and text on dark surfaces */
+  --c-brand: var(--forest);
+  --c-highlight: var(--butter);
+  --c-danger: var(--brick);
+
+  /* Destination auras: one signature light per place, used sparingly as a marker colour */
+  --aura-japan: #e0432a;
+  --aura-bali: #6f9a3e;
+  --aura-italy: #e0a92b;
+  --aura-palawan: #1f9aa0;
+
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-raised: var(--c-raised);
+  --color-inverse: var(--c-inverse);
+  --color-fg: var(--c-fg);
+  --color-muted: var(--c-muted);
+  --color-on-inverse: var(--c-on-inverse);
+  --color-line: var(--c-line);
+  --color-accent: var(--c-accent);
+  --color-signal: var(--c-signal);
+  --color-brand: var(--c-brand);
+  --color-highlight: var(--c-highlight);
+  --color-danger: var(--c-danger);
+  --color-aura-japan: var(--aura-japan);
+  --color-aura-bali: var(--aura-bali);
+  --color-aura-italy: var(--aura-italy);
+  --color-aura-palawan: var(--aura-palawan);
+
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Visible keyboard focus, one ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--signal-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Programmatic focus targets (step headings) do not need a ring */
+[tabindex="-1"]:focus-visible {
+  outline: none;
+}
+
+.on-inverse :focus-visible,
+.focus-inverse:focus-visible {
+  outline-color: var(--butter);
+}
+
+/* Image outline for depth on light surfaces */
+.img-outline {
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -64px;
+  z-index: 100;
+  background: var(--charcoal);
+  color: var(--paper);
+  padding: 12px 16px;
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Highlighter: a flat butter block behind a key word, as on award winning editorial sites */
+.hl {
+  background: var(--butter);
+  color: var(--ink);
+  padding: 0 0.14em;
+  margin: 0 -0.04em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Film grain on dark bands. A tiny tiled noise, not a gradient. */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Scroll reveal: heavy, gentle fade up */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition-property: opacity, transform;
+  transition-duration: 900ms;
+  transition-timing-function: var(--ease-fluid);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image curtain: the frame opens from the bottom while the picture settles */
+.mask {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1100ms var(--ease-fluid);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.mask > * {
+  transform: scale(1.18);
+  transition: transform 1400ms var(--ease-fluid);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.mask[data-visible="true"] {
+  clip-path: inset(0 0 0 0);
+}
+.mask[data-visible="true"] > * {
+  transform: scale(1);
+}
+
+/* Route change. Opacity only: a lingering transform would trap fixed elements. */
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page-in {
+  animation: page-in 500ms var(--ease-fluid) backwards;
+}
+
+/* Questionnaire step change: slides in from the direction of travel */
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--dir, 1) * 32px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.step-in {
+  animation: step-in 400ms var(--ease-fluid) backwards;
+}
+
+/* Hero ken burns, very slow */
+@keyframes drift {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.drift {
+  animation: drift 9s var(--ease-fluid) both;
+}
+
+/* Hero entrance: pieces rise in one after another */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 1100ms var(--ease-fluid) backwards;
+  animation-delay: calc(var(--i, 0) * 110ms + 200ms);
+}
+
+/* Marquee: a band of names that never stops, until asked */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Hero progress fill for the active destination */
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Scroll cue */
+@keyframes cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Reading progress along the top edge, driven by scroll where supported */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 3px;
+  background: var(--signal);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: grow-x linear both;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes grow-x {
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* Underline drawn from the font metrics, colour fades in */
+.link-underline {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 5px;
+  text-decoration-color: transparent;
+  transition-property: text-decoration-color;
+  transition-duration: 300ms;
+  transition-timing-function: var(--ease-fluid);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* Buttons: a solid fill wipes across on hover. Set --wipe and --wipe-text on the element. */
+.wipe {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition-property: color, scale;
+  transition-duration: 300ms;
+  transition-timing-function: var(--ease-fluid);
+}
+.wipe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--wipe, var(--ink));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 500ms var(--ease-fluid);
+}
+.wipe:hover::before,
+.wipe:focus-visible::before {
+  transform: scaleX(1);
+}
+.wipe:hover,
+.wipe:focus-visible {
+  color: var(--wipe-text, var(--paper));
+}
+
+/* Custom cursor ring (pointer devices only). The system cursor stays visible. */
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 90;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border: 1.5px solid var(--signal);
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    width 400ms var(--ease-fluid),
+    height 400ms var(--ease-fluid),
+    margin 400ms var(--ease-fluid),
+    background-color 300ms,
+    opacity 300ms;
+}
+.cursor-ring[data-on="true"] {
+  opacity: 1;
+}
+.cursor-ring[data-mode="view"] {
+  width: 88px;
+  height: 88px;
+  margin: -44px 0 0 -44px;
+  background: var(--butter);
+  border-color: var(--butter);
+}
+
+/* Skeleton */
+@keyframes pulse-soft {
+  50% {
+    opacity: 0.55;
+  }
+}
+.skeleton {
+  background: var(--sand);
+  animation: pulse-soft 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .mask,
+  .mask > * {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
+    transition: none;
+  }
+  .page-in,
+  .drift,
+  .rise,
+  .step-in,
+  .skeleton {
+    animation: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .scroll-progress {
+    display: none;
+  }
+  .wipe::before {
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
