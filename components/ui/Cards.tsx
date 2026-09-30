@@ -26,7 +26,6 @@ export function DestinationCard({
   return (
     <article className="group relative">
       <Link
-        data-cursor="view"
         href={`/destinations/${destination.slug}`}
         className="block focus-visible:outline-offset-4"
       >
@@ -87,7 +86,7 @@ export function TripCard({
 }) {
   return (
     <article className="group">
-      <Link href={`/trips/${trip.slug}`} data-cursor="view" className="block focus-visible:outline-offset-4">
+      <Link href={`/trips/${trip.slug}`} className="block focus-visible:outline-offset-4">
         <MaskReveal><Photo src={trip.hero_image} sizes={sizes} className={aspect} imgClassName={ZOOM} /></MaskReveal>
         <div className="mt-5">
           <Eyebrow className="flex flex-wrap items-center gap-x-4 gap-y-1 text-muted">
@@ -137,7 +136,7 @@ export function JournalCard({
 }) {
   return (
     <article className="group">
-      <Link href={`/journal/${post.slug}`} data-cursor="view" className="block focus-visible:outline-offset-4">
+      <Link href={`/journal/${post.slug}`} className="block focus-visible:outline-offset-4">
         <MaskReveal><Photo src={post.hero_image} sizes={sizes} className={aspect} imgClassName={ZOOM} /></MaskReveal>
         <Eyebrow className="mt-5 flex items-center gap-4 text-muted">
           <span className="text-accent">{post.category}</span>
@@ -162,7 +161,6 @@ export function StyleCard({ style }: { style: TravelStyle }) {
   return (
     <article className="group">
       <Link
-        data-cursor="view"
         href={`/experiences/${style.slug}`}
         className="block focus-visible:outline-offset-4"
       >

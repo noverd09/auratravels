@@ -366,45 +366,6 @@ p {
   color: var(--wipe-text, var(--paper));
 }
 
-/* Custom cursor ring (pointer devices only). The system cursor stays visible. */
-.cursor-ring {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 90;
-  width: 44px;
-  height: 44px;
-  margin: -22px 0 0 -22px;
-  border: 1.5px solid var(--signal);
-  border-radius: 9999px;
-  pointer-events: none;
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition:
-    width 400ms var(--ease-fluid),
-    height 400ms var(--ease-fluid),
-    margin 400ms var(--ease-fluid),
-    background-color 300ms,
-    opacity 300ms;
-}
-.cursor-ring[data-on="true"] {
-  opacity: 1;
-}
-.cursor-ring[data-mode="view"] {
-  width: 88px;
-  height: 88px;
-  margin: -44px 0 0 -44px;
-  background: var(--butter);
-  border-color: var(--butter);
-}
-
 /* Skeleton */
 @keyframes pulse-soft {
   50% {

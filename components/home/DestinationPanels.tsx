@@ -41,7 +41,6 @@ export function DestinationPanels({ items }: { items: PanelItem[] }) {
           >
             <Link
               href={`/destinations/${d.slug}`}
-              data-cursor="view"
               className="on-inverse absolute inset-0 block focus-visible:outline-offset-[-6px]"
               aria-label={`Explore ${d.name}, ${d.country}`}
             >

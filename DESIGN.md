@@ -255,7 +255,6 @@ Print derived and hierarchical, never uniform. Buttons and inputs are 2px; cards
 - **Destination panels:** four photographs as expanding strips. Hover or focus opens one. On phones they stack.
 - **Journey rail:** horizontal snap scroller with arrows and a progress line.
 - **Buttons:** a solid fill wipes across on hover; press scales to 0.96. One ultramarine button per view area.
-- **Cursor:** on fine pointers a ring trails the mouse and becomes a butter "View" chip over cards. The system cursor stays.
 - **Reveal:** section content rises 48px and fades in over 900ms with `cubic-bezier(0.32, 0.72, 0, 1)`. Photographs open like a curtain. Nothing else animates on scroll.
 - **Scroll progress:** a 3px ultramarine line along the top, driven by a CSS scroll timeline.
 - **Tagline reveal:** one large statement whose words rise from 30% to full opacity as they cross a line near the bottom of the viewport.
