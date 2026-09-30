@@ -15,6 +15,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hasFocus, setHasFocus] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const firstLink = useRef<HTMLAnchorElement>(null);
 
@@ -71,12 +72,15 @@ export function Header() {
   const transparent = overlay && !scrolled && !open;
   const tone = transparent || open ? "text-on-inverse" : "text-fg";
   const surface = transparent || open ? "bg-transparent" : "bg-bg/95 border-b border-line";
-  const slide = hidden && !open ? "-translate-y-full" : "translate-y-0";
+  // Never slide the bar away while a keyboard user is inside it
+  const slide = hidden && !open && !hasFocus ? "-translate-y-full" : "translate-y-0";
 
   return (
     <>
       <header
-        className={`${overlay ? "fixed" : "sticky"} inset-x-0 top-0 z-50 transition-[background-color,color,border-color,translate] duration-500 ${EASE} ${slide} ${surface} ${tone} ${open ? "on-inverse" : ""}`}
+        onFocusCapture={() => setHasFocus(true)}
+        onBlurCapture={() => setHasFocus(false)}
+        className={`${overlay ? "fixed" : "sticky"} inset-x-0 top-0 z-50 transition-[background-color,color,border-color,translate] duration-500 ${EASE} ${slide} ${surface} ${tone} ${transparent || open ? "on-inverse" : ""}`}
       >
         <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-6 md:h-20 md:px-10">
           <Link
@@ -103,7 +107,7 @@ export function Header() {
                   {current && (
                     <span
                       aria-hidden="true"
-                      className="size-1.5 rounded-full bg-signal"
+                      className={`size-1.5 rounded-full ${transparent ? "bg-highlight" : "bg-signal"}`}
                     />
                   )}
                   {link.label}
@@ -116,8 +120,8 @@ export function Header() {
             <Link
               href="/plan-your-trip"
               className={buttonClass(
-                "primary",
-                "hidden !min-h-11 !px-5 !py-2 text-sm sm:inline-flex",
+                transparent ? "inverse" : "primary",
+                `!min-h-11 !px-4 !py-2 text-sm sm:!px-5 ${open ? "invisible" : ""}`,
               )}
             >
               Plan your trip
@@ -153,8 +157,11 @@ export function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
-        hidden={!open}
-        className="on-inverse grain fixed inset-0 z-40 flex flex-col bg-inverse px-6 pb-10 pt-28 text-on-inverse lg:hidden"
+        inert={!open}
+        aria-hidden={!open}
+        className={`on-inverse grain fixed inset-0 z-40 flex flex-col bg-inverse px-6 pb-10 pt-28 text-on-inverse transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${
+          open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
       >
         <nav aria-label="Mobile" className="flex flex-1 flex-col justify-center gap-1">
           {[{ href: "/", label: "Home" }, ...NAV_LINKS].map((link, i) => (
@@ -168,7 +175,7 @@ export function Header() {
                   open ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
               >
-                <span className="font-sans text-xs font-bold tabular-nums tracking-[0.14em] text-signal">
+                <span className="font-sans text-xs font-bold tabular-nums tracking-[0.14em] text-signal-light">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {link.label}

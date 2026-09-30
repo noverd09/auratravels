@@ -78,7 +78,7 @@ export function Hero({ slides }: { slides: Slide[] }) {
         </div>
       ))}
       {/* Flat scrim keeps type legible over any photograph */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-inverse/50" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-inverse/55" />
 
       {/* The aura: a large halo, cropped by the frame */}
       <svg
@@ -99,7 +99,7 @@ export function Hero({ slides }: { slides: Slide[] }) {
 
       <div className="mx-auto w-full max-w-[1280px] px-6 pb-6 pt-32 md:px-10 md:pb-10">
         <p style={{ "--i": 0 } as React.CSSProperties} className="rise mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-on-inverse/85">
-          <span aria-hidden="true" className="h-px w-8 bg-signal" />
+          <span aria-hidden="true" className="h-px w-8 bg-highlight" />
           Boutique travel design
         </p>
         <h1 style={{ "--i": 1 } as React.CSSProperties} className="rise max-w-[1000px] text-5xl leading-[0.95] tracking-[-0.04em] md:text-7xl xl:text-8xl">
@@ -109,7 +109,7 @@ export function Hero({ slides }: { slides: Slide[] }) {
           Curated journeys designed around the way you want to travel.
         </p>
         <div style={{ "--i": 3 } as React.CSSProperties} className="rise mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Link href="/plan-your-trip" className={buttonClass("primary")}>
+          <Link href="/plan-your-trip" className={buttonClass("inverse")}>
             Plan your trip
             <ArrowRight
               size={18}
@@ -164,7 +164,7 @@ export function Hero({ slides }: { slides: Slide[] }) {
                       <span className="relative mt-2 block h-[3px] w-full overflow-hidden bg-on-inverse/30">
                         <span
                           key={on ? `on-${index}` : "off"}
-                          className="absolute inset-0 origin-left bg-signal"
+                          className="absolute inset-0 origin-left bg-highlight"
                           style={{
                             transform: on ? undefined : "scaleX(0)",
                             animation:
@@ -198,7 +198,7 @@ export function Hero({ slides }: { slides: Slide[] }) {
         className="absolute bottom-40 left-1/2 hidden h-16 w-px -translate-x-1/2 overflow-hidden bg-on-inverse/25 xl:block"
       >
         <span
-          className="block h-full w-full bg-signal"
+          className="block h-full w-full bg-highlight"
           style={{ animation: "cue 2.2s var(--ease-fluid) infinite" }}
         />
       </div>

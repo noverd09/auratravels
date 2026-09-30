@@ -10,7 +10,7 @@ export function AuraMark({ size = 28, className = "" }: { size?: number; classNa
       className={className}
     >
       <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="24.6" cy="6.4" r="3.4" fill="var(--signal)" />
+      <circle cx="24.6" cy="6.4" r="3.4" fill="var(--mark-dot, var(--signal))" />
     </svg>
   );
 }

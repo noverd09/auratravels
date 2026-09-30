@@ -192,11 +192,11 @@ export default async function HomePage() {
       {/* Tagline reveal */}
       <section
         aria-label="Our approach"
-        className="on-inverse grain bg-inverse py-32 text-on-inverse md:py-48"
+        className="on-inverse grain relative bg-inverse py-32 text-on-inverse md:py-48"
       >
         <Container>
           <Eyebrow className="mb-10 flex items-center gap-3 text-on-inverse/70">
-            <span aria-hidden="true" className="h-px w-8 bg-signal" />
+            <span aria-hidden="true" className="h-px w-8 bg-highlight" />
             How we work
           </Eyebrow>
           <WordReveal
@@ -226,7 +226,7 @@ export default async function HomePage() {
       {/* 04 Featured itinerary */}
       <section
         aria-labelledby="itinerary-heading"
-        className="on-inverse grain bg-brand py-24 text-on-inverse md:py-32"
+        className="on-inverse grain relative bg-brand py-24 text-on-inverse md:py-32"
       >
         <Container>
           <div className="grid gap-16 lg:grid-cols-12">
@@ -354,30 +354,30 @@ export default async function HomePage() {
       {/* Plan your trip */}
       <section
         aria-labelledby="cta-heading"
-        className="relative overflow-hidden bg-signal py-28 text-fg md:py-40"
+        className="on-inverse relative overflow-hidden bg-signal py-28 text-on-inverse md:py-40"
       >
         <svg
           aria-hidden="true"
           viewBox="0 0 100 100"
           fill="none"
-          className="pointer-events-none absolute -right-[16vmin] top-1/2 size-[96vmin] -translate-y-1/2 text-fg/30"
+          className="pointer-events-none absolute -right-[16vmin] top-1/2 size-[96vmin] -translate-y-1/2 text-on-inverse/40"
         >
           <circle cx="50" cy="50" r="49.5" stroke="currentColor" strokeWidth="0.15" />
           <circle cx="85.5" cy="14.5" r="1.6" fill="var(--butter)" />
         </svg>
         <Container className="relative">
           <Reveal>
-            <Eyebrow className="flex items-center gap-3 text-fg">
-              <span aria-hidden="true" className="h-px w-8 bg-fg" />
+            <Eyebrow className="flex items-center gap-3 text-on-inverse">
+              <span aria-hidden="true" className="h-px w-8 bg-highlight" />
               Plan your trip
             </Eyebrow>
             <h2
               id="cta-heading"
               className="mt-8 max-w-[900px] text-5xl leading-[0.95] tracking-[-0.04em] md:text-8xl"
             >
-              Tell us where you want to go. We will help shape the journey.
+              Tell us where you want to go. We will help shape the <span className="hl">journey</span>.
             </h2>
-            <p className="mt-8 max-w-[680px] text-lg text-fg md:text-xl">
+            <p className="mt-8 max-w-[680px] text-lg text-on-inverse md:text-xl">
               Tell us what you are looking for, and our travel specialists will help create a trip
               around your interests, schedule, and budget.
             </p>
@@ -397,7 +397,7 @@ export default async function HomePage() {
                 />
               </Link>
             </div>
-            <p className="mt-6 text-sm text-fg">
+            <p className="mt-6 text-sm text-on-inverse">
               This is a travel request, not a booking. No payment is taken.
             </p>
           </Reveal>

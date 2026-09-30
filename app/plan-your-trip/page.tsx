@@ -28,7 +28,7 @@ export default async function PlanYourTripPage({
     if (trip) {
       const dest = await getDestinationById(trip.destination_id);
       prefill.trip_id = trip.id;
-      prefill.trip_label = `${dest?.name ?? ""} — ${trip.title}`;
+      prefill.trip_label = `${dest?.name ?? ""}: ${trip.title}`;
       if (dest) prefill.destinations = [dest.planner_option];
       prefill.travel_style = trip.travel_styles.map((s) => s.charAt(0).toUpperCase() + s.slice(1));
     }

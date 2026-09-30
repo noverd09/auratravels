@@ -28,7 +28,7 @@ export function DetailHero({
         className="absolute inset-0 -z-20"
         imgClassName="drift"
       />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-inverse/45" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-inverse/50" />
       <Container className="pb-10 pt-32 md:pb-14">
         <Eyebrow className="flex flex-wrap items-center gap-x-4 gap-y-2 text-on-inverse/85">
           {eyebrow}

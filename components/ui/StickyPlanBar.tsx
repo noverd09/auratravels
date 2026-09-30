@@ -56,7 +56,7 @@ export function StickyPlanBar({
           <span className="block truncate font-serif text-xl leading-6">{title}</span>
           {detail && <span className="block truncate text-xs text-on-inverse/70">{detail}</span>}
         </p>
-        <Link href={href} className={buttonClass("primary", "!min-h-11 shrink-0 !px-5 !py-2 text-sm")}>
+        <Link href={href} className={buttonClass("inverse", "!min-h-11 shrink-0 !px-5 !py-2 text-sm")}>
           {label}
           <ArrowRight size={16} aria-hidden="true" />
         </Link>

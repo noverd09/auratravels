@@ -95,7 +95,7 @@ export function TripCard({
             <span className="tabular-nums">{formatDuration(trip.duration)}</span>
           </Eyebrow>
           <h3 className="mt-3 text-3xl leading-none tracking-[-0.02em]">
-            {destinationName} — {trip.title}
+            {destinationName}: {trip.title}
           </h3>
           <p className="mt-3 text-sm font-bold text-muted">
             {trip.locations.join(" → ")}

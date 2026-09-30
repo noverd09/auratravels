@@ -1,6 +1,6 @@
 # Aura Travels
 
-Aura Travels is a travel website/app. The repo is greenfield; stack and structure are TBD. Fill in AGENTS.md sections 10 (project context) as soon as the stack is chosen.
+AURA TRAVEL is a fictional boutique travel agency site (Next.js, Tailwind, mock data, Supabase-ready). Live at https://auratravels.vercel.app. Project context is in AGENTS.md section 10.
 
 @AGENTS.md
 
@@ -8,7 +8,7 @@ The general operating rules (communication, simplicity, surgical changes, goal-d
 
 ---
 
-# Hard rules — non-negotiable, no exceptions
+# Hard rules: non-negotiable, no exceptions
 
 ## Ask Before Destructive Commands
 
@@ -28,7 +28,7 @@ Always require confirmation:
 
 Safe by default: read-only commands (`status`, `diff`, `log`), local builds, tests, lint, typecheck, and edits inside the working tree.
 
-If unsure whether a command is destructive — ask.
+If unsure whether a command is destructive, ask.
 
 ## Verify Before Reporting Complete
 
@@ -53,9 +53,9 @@ Keep CLAUDE.md and AGENTS.md under 300 lines. Move detail into scoped files inst
 
 ---
 
-# Low priority — references
+# Low priority: references
 
-- [`.claude/rules/`](./.claude/rules) — path-scoped rule files, each declaring scope in its `paths:` frontmatter. Currently: `security.md`.
-- [`DESIGN.md`](./DESIGN.md) — the design system (tokens + rationale). Read it before building or styling any UI; follow its Do's and Don'ts.
+- [`.claude/rules/`](./.claude/rules): path-scoped rule files, each declaring scope in its `paths:` frontmatter. Currently: `security.md`.
+- [`DESIGN.md`](./DESIGN.md): the design system (tokens + rationale). Read it before building or styling any UI; follow its Do's and Don'ts.
 - Add directory-level `CLAUDE.md` files (e.g. `app/CLAUDE.md`, `api/CLAUDE.md`) once those trees exist.
 - Learnings go in AGENTS.md section 11 (not a separate file). When the user corrects you, append a concrete one-line rule there and show it to them.

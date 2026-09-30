@@ -5,8 +5,8 @@
   Primitives name a value; semantic tokens name a job. Components use semantic tokens.
 
   Palette rebrand: keeps the restrained travel base (paper, sand, stone, charcoal, forest)
-  and borrows Awwwards' signature moves: a hot signal orange for action and a pale butter
-  highlight for emphasis, set against near black.
+  and borrows Awwwards' signature moves: a saturated signal colour (ultramarine) for action and a
+  pale butter highlight for emphasis, set against near black.
 */
 :root {
   /* Primitives */
@@ -17,8 +17,9 @@
   --charcoal: #111110;
   --umber: #57534b;
   --forest: #21392c;
-  --signal: #fa5d29;
-  --signal-deep: #a8340a;
+  --signal: #2440d8; /* ultramarine: sea and sky, the one loud action colour */
+  --signal-deep: #1c33b8; /* focus rings and text on light surfaces */
+  --signal-light: #a5b4ff; /* lines, dots and text on dark surfaces */
   --butter: #fff083;
   --brick: #8a2b20;
 
@@ -31,15 +32,16 @@
   --c-on-inverse: var(--paper);
   --c-line: var(--stone);
   --c-accent: var(--signal-deep); /* text, numerals and lines on light surfaces */
-  --c-signal: var(--signal); /* fills, and text on dark surfaces */
+  --c-signal: var(--signal); /* fills */
+  --c-signal-light: var(--signal-light);
   --c-brand: var(--forest);
   --c-highlight: var(--butter);
   --c-danger: var(--brick);
 
   /* Destination auras: one signature light per place, used sparingly as a marker colour */
-  --aura-japan: #e0432a;
+  --aura-japan: #d22b45;
   --aura-bali: #6f9a3e;
-  --aura-italy: #e0a92b;
+  --aura-italy: #e6be1e;
   --aura-palawan: #1f9aa0;
 
   --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
@@ -55,6 +57,7 @@
   --color-line: var(--c-line);
   --color-accent: var(--c-accent);
   --color-signal: var(--c-signal);
+  --color-signal-light: var(--c-signal-light);
   --color-brand: var(--c-brand);
   --color-highlight: var(--c-highlight);
   --color-danger: var(--c-danger);
@@ -126,6 +129,11 @@ p {
   outline-offset: -1px;
 }
 
+/* The brand mark dot: ultramarine on light, butter on dark */
+.on-inverse {
+  --mark-dot: var(--butter);
+}
+
 /* Skip link */
 .skip-link {
   position: absolute;
@@ -152,8 +160,8 @@ p {
 }
 
 /* Film grain on dark bands. A tiny tiled noise, not a gradient. */
+/* Needs a positioned element: add relative, fixed or absolute alongside it */
 .grain {
-  position: relative;
   isolation: isolate;
 }
 .grain::after {

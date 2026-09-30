@@ -93,7 +93,7 @@ export default async function TripPage({ params }: { params: Promise<{ slug: str
         }
         title={
           <>
-            {name} — {trip.title}
+            {name}: {trip.title}
           </>
         }
         meta={
@@ -242,7 +242,7 @@ export default async function TripPage({ params }: { params: Promise<{ slug: str
       </section>
 
       <StickyPlanBar
-        title={`${name} — ${trip.title}`}
+        title={`${name}: ${trip.title}`}
         detail={`${trip.duration} days · from ${formatPrice(trip.price_from)} (illustrative)`}
         href={planHref}
       />

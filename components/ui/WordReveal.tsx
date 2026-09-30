@@ -48,7 +48,9 @@ export function WordReveal({
   }, [text]);
 
   return (
-    <p className={className} aria-label={text}>
+    <p className={className}>
+      {/* Real text for assistive tech; the animated spans below are decorative */}
+      <span className="sr-only">{text}</span>
       {words.map((word, i) => (
         <span
           key={`${word}-${i}`}

@@ -18,7 +18,7 @@ export function Footer() {
             <p className="mt-6 max-w-[460px] font-serif text-3xl leading-9 text-on-inverse/85">
               Curated journeys. <span className="hl">Unforgettable</span> places.
             </p>
-            <Link href="/plan-your-trip" className={buttonClass("primary", "mt-10")}>
+            <Link href="/plan-your-trip" className={buttonClass("inverse", "mt-10")}>
               Plan your trip
             </Link>
           </div>
@@ -88,7 +88,7 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <a href="#main" className="link-underline flex min-h-11 items-center gap-2 font-bold text-on-inverse">
+              <a href="#" className="link-underline flex min-h-11 items-center gap-2 font-bold text-on-inverse">
                 Back to top
                 <ArrowUp size={16} aria-hidden="true" />
               </a>

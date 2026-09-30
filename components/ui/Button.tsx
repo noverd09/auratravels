@@ -8,12 +8,12 @@ const base =
   "wipe group inline-flex min-h-12 items-center justify-center gap-3 rounded-xs px-6 py-3 text-base font-bold tracking-[0.01em] active:scale-[0.96] [text-wrap:nowrap]";
 
 const variants: Record<ButtonVariant, string> = {
-  // Signal orange fill, near black label: the one loud action on a screen
-  primary: "bg-signal text-fg [--wipe:var(--ink)] [--wipe-text:var(--paper)]",
+  // Ultramarine fill, paper label: the one loud action on a screen
+  primary: "bg-signal text-on-inverse [--wipe:var(--ink)] [--wipe-text:var(--paper)]",
   secondary: "bg-raised text-fg [--wipe:var(--ink)] [--wipe-text:var(--paper)]",
   // For dark bands
-  inverse: "bg-bg text-fg [--wipe:var(--signal)] [--wipe-text:var(--ink)]",
-  // For signal orange bands
+  inverse: "bg-bg text-fg [--wipe:var(--butter)] [--wipe-text:var(--ink)]",
+  // For ultramarine bands
   dark: "bg-inverse text-on-inverse [--wipe:var(--paper)] [--wipe-text:var(--ink)]",
   outline:
     "border border-current bg-transparent text-current [--wipe:var(--paper)] [--wipe-text:var(--ink)]",

@@ -6,8 +6,9 @@ description: Design system for AURA TRAVEL, a boutique travel agency site. Luxur
 colors:
   primary: "#21392C"
   secondary: "#57534B"
-  tertiary: "#FA5D29"
-  tertiary-deep: "#A8340A"
+  tertiary: "#2440D8"
+  tertiary-deep: "#1C33B8"
+  tertiary-light: "#A5B4FF"
   highlight: "#FFF083"
   neutral: "#E4DFD3"
   surface: "#EFECE6"
@@ -15,9 +16,9 @@ colors:
   border: "#CDC7B9"
   inverse: "#111110"
   error: "#8A2B20"
-  aura-japan: "#E0432A"
+  aura-japan: "#D22B45"
   aura-bali: "#6F9A3E"
-  aura-italy: "#E0A92B"
+  aura-italy: "#E6BE1E"
   aura-palawan: "#1F9AA0"
 
 typography:
@@ -104,7 +105,7 @@ components:
     padding: "{spacing.xl}"
   button-primary:
     backgroundColor: "{colors.tertiary}"
-    textColor: "{colors.on-surface}"
+    textColor: "{colors.surface}"
     typography: "{typography.button}"
     rounded: "{rounded.xs}"
     padding: "{spacing.md}"
@@ -164,9 +165,13 @@ components:
     padding: "{spacing.xxl}"
   band-signal:
     backgroundColor: "{colors.tertiary}"
-    textColor: "{colors.on-surface}"
+    textColor: "{colors.surface}"
     typography: "{typography.display}"
     padding: "{spacing.xxl}"
+  link-on-dark:
+    backgroundColor: "{colors.inverse}"
+    textColor: "{colors.tertiary-light}"
+    typography: "{typography.label-caps}"
   aura-japan:
     backgroundColor: "{colors.aura-japan}"
     size: 10px
@@ -185,36 +190,37 @@ components:
 
 ## Overview
 
-AURA TRAVEL is a boutique travel consultancy, not a booking engine. The register is **luxury travel editorial with the nerve of an award winning digital product**: full bleed photography, a big serif that speaks in full sentences, a quiet sans for everything functional, and a hot signal orange for the moments where the visitor is asked to act.
+AURA TRAVEL is a boutique travel consultancy, not a booking engine. The register is **luxury travel editorial with the nerve of an award winning digital product**: full bleed photography, a big serif that speaks in full sentences, a quiet sans for everything functional, and a saturated ultramarine for the moments where the visitor is asked to act.
 
-The colour direction was taken from Awwwards itself: near black ink, a pale butter highlight, and a vivid orange red. Those three are set against the restrained travel base from the brief (paper, sand, stone, charcoal, forest green). The result is calm most of the time and loud in exactly three places: the action button, the highlighted word, and the closing band.
+The colour direction was taken from Awwwards itself: near black ink, a pale butter highlight, and one saturated signal colour, which we made ultramarine so it reads as sea and sky. Those three are set against the restrained travel base from the brief (paper, sand, stone, charcoal, forest green). The result is calm most of the time and loud in exactly three places: the action button, the highlighted word, and the closing band.
 
 The core idea is the **aura**: the quality of light in a place. It shows up in three ways, and all three should survive any change:
 
 1. **The halo.** A thin ring with one point of light on its edge is the brand mark. It reappears, cropped, in the hero, page headers, and the closing band.
-2. **Signature light per destination.** Japan has vermilion, Bali a paddy green, Italy lemon gold, Palawan lagoon teal. They appear only as a small dot beside a destination name, in the marquee, and as the live dot in the hero caption. They never fill a surface.
+2. **Signature light per destination.** Japan has crimson, Bali a paddy green, Italy citrus yellow, Palawan lagoon teal. They appear only as a small dot beside a destination name, in the marquee, and as the live dot in the hero caption. They never fill a surface.
 3. **Field notes.** Coordinates, index numerals (01, 02), day numerals, and small uppercase labels give the site the feel of an annotated journal.
 
-It gives up density and dark mode. It is light by default, with charcoal, forest, and orange bands used as punctuation.
+It gives up density and dark mode. It is light by default, with charcoal, forest, and ultramarine bands used as punctuation.
 
 When a case is not covered, ask what a printed travel magazine would do: quiet type, hairline rules, one loud photograph, one highlighted word.
 
 ## Colors
 
 - **Surface (#EFECE6):** paper, the page. Replaces pure white everywhere.
-- **On-surface (#171614):** warm near black ink for text, and the label color on orange.
+- **On-surface (#171614):** warm near black ink for text.
 - **Inverse (#111110):** charcoal, for the hero, tagline, footer, and menu. Carries a fine film grain.
 - **Neutral (#E4DFD3):** sand, the fill for raised sections, cards, and secondary buttons.
 - **Border (#CDC7B9):** stone, for hairlines, dividers, and chips.
 - **Primary (#21392C):** natural forest green, for the itinerary band and quiet contrast.
 - **Secondary (#57534B):** umber, for muted text and metadata.
-- **Tertiary (#FA5D29):** signal orange. Fills only: primary buttons, the scroll progress line, the closing band, and text on dark surfaces. Ink text sits on it (5.8:1). Never used as small text on light surfaces.
-- **Tertiary deep (#A8340A):** the same hue darkened to pass 4.5:1 for small text and numerals on paper and sand.
+- **Tertiary (#2440D8):** signal ultramarine. Fills: primary buttons, the scroll progress line, the closing band, and the brand mark dot on light surfaces. Paper text sits on it (6.4:1).
+- **Tertiary deep (#1C33B8):** the same hue slightly deeper for small text, numerals, and focus rings on paper and sand.
+- **Tertiary light (#A5B4FF):** periwinkle for lines, numbers, and text on charcoal and forest, where the base blue would not pass contrast.
 - **Highlight (#FFF083):** butter. A flat block behind one key word per view, the marquee band, and hover states. Text on it is always ink.
 - **Error (#8A2B20):** brick, from the accent family.
 - **Aura colors:** decorative dots only; never used for text.
 
-On forest green, small labels use butter rather than orange, which fails contrast there.
+On forest green and charcoal, small labels use butter or periwinkle rather than the base blue. Buttons that sit on photographs or dark bands use the paper fill with a butter wipe.
 
 ## Typography
 
@@ -243,15 +249,15 @@ Print derived and hierarchical, never uniform. Buttons and inputs are 2px; cards
 
 ## Components and motion
 
-- **Header:** wordmark left (the mark rotates on hover), uppercase links, one orange action right. It is transparent over the hero, solid once scrolled, hides on the way down and returns on the way up. The current page gets an orange dot. On phones it becomes a solid charcoal sheet with numbered serif links that rise in from a mask.
+- **Header:** wordmark left (the mark rotates on hover), uppercase links, one ultramarine action right (paper over the hero). It is transparent over the hero, solid once scrolled, hides on the way down and returns on the way up. The current page gets a small dot. On phones it becomes a solid charcoal sheet with numbered serif links that rise in from a mask.
 - **Hero:** a full height slideshow of four destinations with a flat 50% scrim, a butter highlight on "journey", staggered entrance, thumbnails with a timer line, and a pause control. Autoplay is off for reduced motion.
 - **Marquee:** a butter band of destination names with their aura dots. It pauses on hover and stops for reduced motion.
 - **Destination panels:** four photographs as expanding strips. Hover or focus opens one. On phones they stack.
 - **Journey rail:** horizontal snap scroller with arrows and a progress line.
-- **Buttons:** a solid fill wipes across on hover; press scales to 0.96. One orange button per view area.
+- **Buttons:** a solid fill wipes across on hover; press scales to 0.96. One ultramarine button per view area.
 - **Cursor:** on fine pointers a ring trails the mouse and becomes a butter "View" chip over cards. The system cursor stays.
 - **Reveal:** section content rises 48px and fades in over 900ms with `cubic-bezier(0.32, 0.72, 0, 1)`. Photographs open like a curtain. Nothing else animates on scroll.
-- **Scroll progress:** a 3px orange line along the top, driven by a CSS scroll timeline.
+- **Scroll progress:** a 3px ultramarine line along the top, driven by a CSS scroll timeline.
 - **Tagline reveal:** one large statement whose words rise from 30% to full opacity as they cross a line near the bottom of the viewport.
 - **Sticky plan bar:** appears on destination and trip pages after the hero and leaves before the closing band.
 - **Questionnaire:** one question per step, large tappable tiles, a thin progress line, a sticky action bar on phones, and a review step with edit links.
@@ -260,7 +266,7 @@ Everything animated respects `prefers-reduced-motion`.
 
 ## Do's and Don'ts
 
-- Do keep orange to fills and to text on dark. Use tertiary deep for orange text on light surfaces.
+- Do keep ultramarine to fills, the mark, and small text on light surfaces (use tertiary deep). On dark surfaces use periwinkle or butter.
 - Do use the butter highlight on one word per view, never on whole sentences.
 - Do keep aura colors to dots.
 - Do let photographs run large, credit them on the credits page, and check text over them for 4.5:1 (the scrim is part of the design).
