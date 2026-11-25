@@ -88,6 +88,16 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <a
+                href="https://www.noverdagsaan.site"
+                target="_blank"
+                rel="noopener"
+                className="link-underline flex min-h-11 items-center"
+              >
+                Created by www.noverdagsaan.site
+              </a>
+            </li>
+            <li>
               <a href="#" className="link-underline flex min-h-11 items-center gap-2 font-bold text-on-inverse">
                 Back to top
                 <ArrowUp size={16} aria-hidden="true" />
